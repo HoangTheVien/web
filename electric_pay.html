@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu hóa đơn tiền điện</title>
+
+<style>
+    body {
+  margin: 0;
+  background-image: url(./assets/electric_br.jpg);
+  background-size: cover;
+  font-family: Arial, sans-serif;
+
+}
+* {
+  box-sizing: border-box;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background: #eee;
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+}
+
+
+.top-bar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+
+  background: white;
+  display: flex;
+  align-items: center;
+
+  padding-left: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+
+.top-icon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  object-fit: contain;
+  margin-left: 100px;
+}
+  </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="thietkeweb.html"><img src="assets/grn.jpg" class="top-icon"></a>
+    </div>
+
+    <div class="login">
+    <div class="login-box">
+      <h3>Tra cứu hóa đơn tiền điện</h3>
+          <input type="text" id="ten" placeholder="Tên khách hàng">
+          <input type="text" id="cu" placeholder="Số điện cũ">
+          <input type="number" id="moi" placeholder="Số điện mới"><br>
+      <button class="btn-login"onclick="tinhTienDien()">Tra cứu hóa đơn</button>
+    </div>
+  </div>
+
+    <script src="thietkeweb.js"></script>
+</body>
+</html>
