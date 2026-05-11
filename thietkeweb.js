@@ -17,6 +17,7 @@ fetch("footer.html")
 
 
 
+// Tiền Nước
 function tinhTienNuoc() {
   let ten = document.getElementById("ten").value;
   let cu = parseFloat(document.getElementById("cu").value);
@@ -40,6 +41,7 @@ function tinhTienNuoc() {
 }
 
 
+// Tiền điện
 function tinhTienDien() {
   let ten = document.getElementById("ten").value;
   let cu = parseFloat(document.getElementById("cu").value);
