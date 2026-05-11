@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hóa đơn tiền nước</title>
+
+<style>
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+.hoadon {
+  width: 210mm;
+  min-height: 297mm;
+  margin: auto;
+  background: white;
+  padding: 12mm;
+  box-sizing: border-box;
+}
+.header {
+  text-align: center;
+  border-bottom: 2px solid #0077b6;
+  padding-bottom: 8px;
+}
+.menu_water_bill{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header h2 {
+  color: #d00000;
+  margin: 0;
+  font-size: 20px;
+}
+
+.header p {
+  margin: 3px 0;
+  font-size: 13px;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.info-table td {
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+
+.label {
+  width: 30%;
+  background: #f1f1f1;
+  font-weight: bold;
+}
+
+.customer {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.customer td {
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.table th, .table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th {
+  background: #e9ecef;
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+.sign-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: green;
+  text-align: center;
+}
+.sign-box {
+  border: 2px solid green;
+  padding: 10px;
+  width: 250px;
+  color: green;
+  font-size: 14px;
+  text-align: center;
+}
+.ky {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  button {
+    display: none;
+  }
+
+  .invoice {
+    box-shadow: none;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+}
+
+</style>
+</head>
+
+<body>
+  <!-- <p>Tên khách hàng: <span id="ten"></span></p> -->
+  <p style="display: none">Số nước cũ: <span id="cu"></span></p>
+  <p style="display: none">Số nước mới: <span id="moi"></span></p>
+  <!-- <p>Số nước đã dùng: <span id="soNuoc"></span></p> -->
+  <!-- <p><b>Số tiền phải trả: <span id="tien"></span> VNĐ</b></p> -->
+  <!-- <p>VAT (8%): <span id="vatNuoc"></span></p> -->
+  <!-- <p><b>Tổng tiền: <span id="tongNuoc"></span> VNĐ</b></p> -->
+
+<div class="hoadon">
+
+  <div class="menu_water_bill">
+    <div>
+      <img src="./assets/Logo-Dai-Hoc-Ha-Long-UHL.webp" alt="Logo-Dai-Hoc-Ha-Long-UHL" width="120px" height="90px"  >
+    </div>
+    <div class="header">
+      <b style="color:red;">HÓA ĐƠN GTGT (TIỀN NƯỚC)</b> <br>
+      <b><p id="ngay_1"></p></b> <br><br>
+      <p>(Bản thể hiện của hóa đơn điện tử)</p><br>
+    </div>
+    <div>
+      <p>KH: 8910JQK</p>
+    </div>
+  </div>
+
+
+  <table class="info-table">
+    <tr>
+      <td class="label">Đơn vị bán hàng</td>
+      <td>CÔNG TY CỔ PHẦN CẤP NƯỚC QUẢNG NINH</td>
+    </tr>
+    <tr>
+      <td class="label">Địa chỉ</td>
+      <td>258 Bạch Đằng, Quảng Ninh</td>
+    </tr>
+    <tr>
+      <td class="label">Điện thoại</td>
+      <td>0397854187</td>
+    </tr>
+  </table>
+  <table class="info-table">
+    <tr>
+      <td class="label">Họ tên khách hàng</td>
+      <td id="ten"></td>
+    </tr>
+    <tr>
+      <td class="label">Địa chỉ khách hàng</td>
+      <td>Quảng Ninh</td>
+    </tr>
+  </table>
+
+  <table class="table">
+  <tr>
+    <td>Đơn giá (VNĐ/m³):</td>
+    <td><b>5.000</b></td>
+  </tr>
+
+  <tr>
+    <td>Sản lượng (m³):</td>
+    <td> <b><span id="soNuoc"></span></b></td>
+  </tr>
+
+  <tr>
+    <td>Tiền nước:</td>
+    <td><b id="tien"></b></td>
+  </tr>
+
+  <tr>
+    <td>Thuế VAT (8%):</td>
+    <td><b id="vatNuoc"></b></td>
+  </tr>
+
+  <tr style="background:#f8f9fa;">
+    <td><b>Tổng thanh toán:</b></td>
+    <td style="color:red; font-size:16px;">
+      <b id="tongNuoc"></b>
+    </td>
+  </tr>
+
+</table>
+  <div class="ky">
+    <div class="sign">
+        <div class="sign-title" style="font-family: none;">
+          <b>Đơn vị bán hàng</b><br>
+          <span style="font-size: 13px;">(Chữ ký điện tử, chữ ký số)</span>
+        </div>
+      <div class="sign-box">
+        <b><span style="font-size: 15px;">Đã ký bởi: HOÀNG THẾ VIÊN ✔<br><br>
+        Ngày ký: <b id="ngay_2"></b></span></b>
+      </div>
+    </div>
+  </div>
+  <br>
+  <button onclick="window.print()" >In hóa đơn</button>
+
+</div>
+
+<script src="thietkeweb.js"></script>
+
+</body>
+</html>

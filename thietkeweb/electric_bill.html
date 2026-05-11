@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hóa đơn tiền điện</title>
+
+<style>
+body {
+  line-height: 1.3;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+.invoice {
+  width: 210mm;
+  min-height: 297mm;
+  margin: auto;
+  background: white;
+  padding: 20mm;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 10px;
+}
+
+.header img {
+  width: 90px;
+}
+
+.header-text {
+  font-size: 14px;
+}
+
+.header-text h2 {
+  color: red;
+  margin: 0;
+}
+
+.title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.title h2 {
+  color: red;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 6px;
+  white-space: nowrap;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+.sign-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: green;
+  text-align: center;
+}
+.sign-box {
+  border: 2px solid green;
+  padding: 10px;
+  width: 250px;
+  color: green;
+  font-size: 14px;
+  text-align: center;
+}
+.ky {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .invoice {
+    margin: 0;
+    box-shadow: none;
+  }
+
+  button {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+  <!-- <p>Tên khách hàng: <span id="ten"></span></p> -->
+  <!-- <p style="display:none;">Số điện cũ: <span id="cu"></span></p> -->
+  <!-- <p style="display:none;">Số điện mới: <span id="moi"></span></p> -->
+  <!-- <p>Số điện đã dùng: <span id="soDien"></span></p> -->
+  <!-- <p><b>Số tiền phải trả: <span id="tienDien"></span> VNĐ</b></p> -->
+  <!-- <p>VAT (8%): <span id="vatDien"></span></p> -->
+  <!-- <p><b>Tổng tiền: <span id="tongDien"></span> VNĐ</b></p> -->
+
+<div class="invoice">
+
+  <div class="header">
+    <img src="./assets/images.png">
+    <div class="header-text">
+      <h2>CÔNG TY ĐIỆN LỰC</h2>
+      <b>Địa chỉ: </b> 258 Bạch Đằng, Phường Vàng Danh, Tỉnh Quảng Ninh<br>
+      <b>Điện thoại: </b> 0397854187 <br>
+      <b>Số tài khoản: </b>849099999999-Ngân hàng TMCP Kỹ Thương Việt Nam
+    </div>
+  </div>
+
+  <div class="title">
+    <h2>HÓA ĐƠN GTGT (TIỀN ĐIỆN)</h2>
+    <p>(Bản thể hiện hóa đơn điện tử)</p>
+    <b><p id="ngay_1"></p></b>
+  </div>
+
+  <!-- <p><b>Khách hàng:</b> <span id="ten"></span></p> -->
+
+<table border="1" style="width:100%; border-collapse:collapse; text-align:center; font-size:16px;">
+
+  <tr>
+    <th colspan="4" style="font-size:20px; color:red;">
+      HÓA ĐƠN TIỀN ĐIỆN
+    </th>
+  </tr>
+
+  <tr>
+    <td style="text-align:left; border-right: none;">
+      <b>Tên khách hàng:</b> <br>
+      <b>Địa chỉ:</b>
+    </td>
+    <td colspan="3" style="text-align:left; border-left:none;">
+      <div>
+       <span id="ten"></span><br>
+       Quảng Ninh
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="width:25%;"><b>Chỉ số cũ</b></td>
+    <td style="width:25%;"><b>Chỉ số mới</b></td>
+    <td style="width:25%;"><b>Số điện tiêu thụ (kWh)</b></td>
+    <td style="width:25%;"><b>Đơn giá (VNĐ)</b></td>
+  </tr>
+
+  <tr>
+    <td><span id="cu"></span></td>
+    <td><span id="moi"></span></td>
+    <td><b><span id="soDien"></span></b></td>
+    <td>3.000</td>
+  </tr>
+
+  <tr>
+    <td colspan="3" style="text-align:right;"><b>Thành tiền:</b></td>
+    <td><b><span id="tienDien"></span></b></td>
+  </tr>
+
+  <tr>
+    <td colspan="3" style="text-align:right;">Thuế VAT (8%):</td>
+    <td><span id="vatDien"></span></td>
+  </tr>
+
+  <tr>
+    <td colspan="3" style="text-align:right;"><b>Tổng thanh toán:</b></td>
+    <td><b><span id="tongDien"></span></b></td>
+  </tr>
+
+</table>
+
+
+  <div class="ky">
+    <div class="sign">
+        <div class="sign-title" style="font-family: none;">
+          <b>Đơn vị bán hàng</b><br>
+          <span style="font-size: 13px;">(Chữ ký điện tử, chữ ký số)</span>
+        </div>
+      <div class="sign-box">
+        <b><span style="font-size: 15px;">Đã ký bởi: HOÀNG THẾ VIÊN ✔<br><br>
+        Ngày ký: <b id="ngay_2"></b></span></b>
+      </div>
+    </div>
+  </div>
+  <br>
+  <button onclick="window.print()" >In hóa đơn</button>
+
+</div>
+<script src="thietkeweb.js"></script>
+
+</body>
+</html>
